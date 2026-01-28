@@ -34,4 +34,32 @@ sequenceDiagram
 
     API->>Model: Envia vetor de respostas
     Model-->>API: Retorna Predição
+
+
+```
+
+🚀 Como Rodar
+Instale as dependências:
+
+Bash
+
+pip install flask flask-cors numpy scikit-learn
+Execute o servidor:
+
+Bash
+
+python app.py
+O servidor rodará em http://127.0.0.1:5000.
+
+📡 Endpoints
+POST /mAInd/start
+Inicia uma nova sessão de conversa. Gera um UUID único para o usuário.
+
+POST /mAInd
+Recebe a resposta do usuário e retorna a próxima interação ou o diagnóstico final.
+
+Body: { "user_id": "...", "text_mensage": "sim" }
+
+⚖️ Sobre o Modelo
+O sistema utiliza um classificador KNeighborsClassifier. O modelo recebe um vetor binário de respostas e classifica o usuário em uma das 5 categorias: Normal, Stress, Loneliness, Depression ou Anxiety.
     API-->>Frontend: Retorna Diagnóstico Final
